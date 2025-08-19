@@ -95,3 +95,13 @@ equalBtn.addEventListener('click' ,()=> {
     chosenOperator = ''
     calculationFinished = true;
 })
+
+// Adding a clear button
+const clearBtn = document.querySelector('#clear');
+clearBtn.addEventListener('click', () => {
+    firstOperand = '';
+    display.textContent = '0';
+    chosenOperator = '';
+    calculationFinished = false;
+    currentOperand = '';
+})
