@@ -105,3 +105,10 @@ clearBtn.addEventListener('click', () => {
     calculationFinished = false;
     currentOperand = '';
 })
+
+// Adding a decimal point functionality
+const decimalPoint = document.querySelector('#decimal');
+decimalPoint.addEventListener('click', ()=> {
+    if (display.textContent.split(' ').at(-1).includes('.') === false) // check if the last number, first or second has a dot in it.
+    display.textContent += decimalPoint.textContent;
+})
