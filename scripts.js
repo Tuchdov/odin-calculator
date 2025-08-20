@@ -141,3 +141,29 @@ document.addEventListener('keydown', (event) => {
              currentOperand = Number(display.textContent.split(' ').at(-1))
     }
 }});
+
+// Keyboard support
+document.addEventListener('keydown', (keypress)=> {
+    // const digitKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    // const operatorKeys = ['+', '-', '*', '/'];
+    digits.forEach((digit)=> {
+        if ( digit.textContent === keypress.key  ){
+            digit.click();
+        }
+    })
+    operators.forEach((operator) => 
+         {
+            if(operator.textContent === keypress.key)
+                operator.click();
+             })
+     if ( keypress.key === '=' || keypress.key === 'Enter' ){
+        equalBtn.click();
+     }
+    else  if ( keypress.key === '.'  ){
+        decimalPoint.click();
+     }
+    else  if ( keypress.key === 'c' ||  keypress.key === 'C' ){
+        clearBtn.click();
+     }
+});
+    
