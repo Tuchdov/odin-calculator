@@ -10,9 +10,9 @@ const  subtract = function (a, b) {
 
 
 const divide = function (a, b) {
-    return a / b;
+    bNum = Number(b)
+    return bNum === 0 ? 'Error' : a / bNum;
 };
-
 const multiply = function (a, b) {
     return a * b;
 };
