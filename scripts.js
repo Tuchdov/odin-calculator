@@ -45,21 +45,22 @@ let currentOperand = display.textContent;
 
 digits.forEach((digit) => {
     digit.addEventListener('click', () => {
-        if (calculationFinished) {
-            display.textContent = digit.textContent;
-            calculationFinished = false
-        }
-        else if (display.textContent === '0') {
-            display.textContent = digit.textContent;
-            currentOperand = Number(display.textContent);
-        }
-        else {
-            display.textContent += digit.textContent;
-            currentOperand = Number(display.textContent);
-        }
-    })
-});
+        const digitText = digit.textContent;
 
+        // Condition to REPLACE the display
+        if (calculationFinished || display.textContent === '0') {
+            display.textContent = digitText;
+            calculationFinished = false; // Always reset the flag here
+        } 
+        // Condition to ADD to the display
+        else {
+            display.textContent += digitText;
+        }
+
+        // ALWAYS update currentOperand after any change
+        currentOperand = Number(display.textContent.split(' ').at(-1));
+    });
+});
 
 let chosenOperator = '';
 let firstOperand = '';
