@@ -17,6 +17,27 @@ const multiply = function (a, b) {
     return a * b;
 };
 
+function roundToN(num, digits) {
+    // Ensure the inputs are valid numbers before proceeding.
+    if (typeof num !== 'number' || typeof digits !== 'number') {
+        return NaN;
+    }
+
+    // Create a multiplier to shift the decimal point to the right.
+    // For example, with 2 digits, the factor is 100.
+    const factor = Math.pow(10, digits);
+
+    // 1. Multiply the number by the factor to move the decimal point.
+    //    (e.g., 3.14159 * 100 = 314.159)
+    // 2. Add Number.EPSILON to correct for potential floating-point inaccuracies.
+    // 3. Use Math.round() to round to the nearest whole number.
+    //    (e.g., Math.round(314.159) = 314)
+    // 4. Divide by the factor to move the decimal point back.
+    //    (e.g., 314 / 100 = 3.14)
+    return Math.round((num + Number.EPSILON) * factor) / factor;
+}
+
+
 // A calculator operation will consist of a number, an operator, and another number
 
 // create three variables one for each argument.
@@ -93,7 +114,7 @@ equalBtn.addEventListener('click', () => {
     // calc function here 
     answer = CalculateOperation(firstOperand, chosenOperator, secondOperand);
     // display the result 
-    display.textContent = answer;
+    display.textContent = roundToN(answer,3);
     currentOperand = answer;
     // reset the opereator
     chosenOperator = ''
